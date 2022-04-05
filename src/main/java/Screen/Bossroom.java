@@ -1,4 +1,4 @@
 package Screen;
 
-public class Bossroom {
+public class Bossroom extends Screens {
 }

@@ -1,4 +1,4 @@
 package Screen;
 
-public class Level {
+public class Level extends Screens{
 }

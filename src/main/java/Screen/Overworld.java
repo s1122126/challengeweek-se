@@ -1,4 +1,4 @@
 package Screen;
 
-public class Overworld {
+public class Overworld extends Screens{
 }
