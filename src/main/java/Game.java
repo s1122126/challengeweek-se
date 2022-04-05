@@ -1,9 +1,13 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.handlers.CollectibleHandler;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Game extends GameApplication {
@@ -22,26 +26,48 @@ public class Game extends GameApplication {
     protected void initGame(){
         player = FXGL.entityBuilder()
                 .at(200, 200)
-                .view("mario.png")
+                .viewWithBBox("mario.png")
+                .with(new CollidableComponent(true))
+                .scale(0.5, 0.5)
+                .type(EntityTypes.PLAYER)
                 .buildAndAttach();
+
+        FXGL.entityBuilder()
+                .at(600, 600)
+                .viewWithBBox(new Circle(10, Color.WHITE))
+                .with(new CollidableComponent(true))
+                .type(EntityTypes.ENEMY)
+                .buildAndAttach();
+
+        FXGL.getGameScene().setBackgroundColor(Color.BLACK);
     }
 
     @Override
     protected void initInput(){
         FXGL.onKey(KeyCode.W, () -> {
-            player.translateY(-5);
+            player.translateY(-2);
         });
 
         FXGL.onKey(KeyCode.A, () -> {
-            player.translateX(-5);
+            player.translateX(-2);
         });
 
         FXGL.onKey(KeyCode.S, () -> {
-            player.translateY(5);
+            player.translateY(2);
         });
 
         FXGL.onKey(KeyCode.D, () -> {
-            player.translateX(5);
+            player.translateX(2);
+        });
+    }
+
+    @Override
+    protected void initPhysics(){
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.ENEMY) {
+            @Override
+            protected void onCollision(Entity player, Entity enemy) {
+                enemy.removeFromWorld();
+            }
         });
     }
 
