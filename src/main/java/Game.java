@@ -20,6 +20,7 @@ public class Game extends GameApplication {
         gameSettings.setTitle("The Four Nerds and the Social Adventures of Terror");
         gameSettings.setHeight(800);
         gameSettings.setWidth(800);
+        gameSettings.setAppIcon("glasses.png");
     }
 
     @Override
