@@ -1,18 +1,17 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.dsl.handlers.CollectibleHandler;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+
 
 public class Game extends GameApplication {
 
-    private Entity player;
+    private Player player_1 = new Player(200, 200, true);
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
@@ -25,13 +24,7 @@ public class Game extends GameApplication {
 
     @Override
     protected void initGame(){
-        player = FXGL.entityBuilder()
-                .at(200, 200)
-                .viewWithBBox("mario.png")
-                .with(new CollidableComponent(true))
-                .scale(0.5, 0.5)
-                .type(EntityTypes.PLAYER)
-                .buildAndAttach();
+        player_1.LoadPlayer();
 
         FXGL.entityBuilder()
                 .at(600, 600)
@@ -43,24 +36,26 @@ public class Game extends GameApplication {
         FXGL.getGameScene().setBackgroundColor(Color.BLACK);
     }
 
-    @Override
-    protected void initInput(){
-        FXGL.onKey(KeyCode.W, () -> {
-            player.translateY(-2);
-        });
 
-        FXGL.onKey(KeyCode.A, () -> {
-            player.translateX(-2);
-        });
-
-        FXGL.onKey(KeyCode.S, () -> {
-            player.translateY(2);
-        });
-
-        FXGL.onKey(KeyCode.D, () -> {
-            player.translateX(2);
-        });
-    }
+//    Werkt nu nog niet. moet ff kijken hoe ik de controls buiten de game klasse krijg.
+//    @Override
+//    protected void initInput(){
+//        FXGL.onKey(KeyCode.W, () -> {
+//            player_1.translateY(-2);
+//        });
+//
+//        FXGL.onKey(KeyCode.A, () -> {
+//            player.translateX(-2);
+//        });
+//
+//        FXGL.onKey(KeyCode.S, () -> {
+//            player.translateY(2);
+//        });
+//
+//        FXGL.onKey(KeyCode.D, () -> {
+//            player.translateX(2);
+//        });
+//    }
 
     @Override
     protected void initPhysics(){
