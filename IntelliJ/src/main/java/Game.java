@@ -44,6 +44,7 @@ public class Game extends GameApplication {
             player.translateX(5);
         });
     }
+    //test
 
     public static void main(String[] args) {
         launch(args);
