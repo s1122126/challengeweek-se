@@ -23,15 +23,12 @@ public class PlayerComponent extends Component {
 
         animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 1, 1);
         animWalk = new AnimationChannel(image, 4, 32, 42, Duration.seconds(0.66), 0, 3);
-
-        texture = new AnimatedTexture(animIdle);
-        texture.loop();
     }
 
     @Override
     public void onAdded() {
         entity.getTransformComponent().setScaleOrigin(new Point2D(16, 21));
-        entity.getViewComponent().addChild(texture);
+//        entity.getViewComponent().addChild(texture);
 
         physics.onGroundProperty().addListener((obs, old, isOnGround) -> {
             if (isOnGround) {
@@ -40,18 +37,6 @@ public class PlayerComponent extends Component {
         });
     }
 
-    @Override
-    public void onUpdate(double tpf) {
-        if (physics.isMovingX()) {
-            if (texture.getAnimationChannel() != animWalk) {
-                texture.loopAnimationChannel(animWalk);
-            }
-        } else {
-            if (texture.getAnimationChannel() != animIdle) {
-                texture.loopAnimationChannel(animIdle);
-            }
-        }
-    }
 
     public void left() {
         getEntity().setScaleX(-1);
