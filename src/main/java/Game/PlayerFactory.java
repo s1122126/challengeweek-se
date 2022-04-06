@@ -14,6 +14,9 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsComponent;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -62,6 +65,23 @@ public class PlayerFactory implements EntityFactory {
                 .with(new RandomMoveComponent(
                         new Rectangle2D(0, 0,
                                 getAppWidth(), getAppHeight()), 50))
+                .build();
+    }
+    @Spawns("ground")
+    public Entity newGround(SpawnData data){
+        return entityBuilder()
+                .type(EntityType.GROUND)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
+    @Spawns("platform")
+    public Entity newPlatform(SpawnData data){
+        return entityBuilder()
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
                 .build();
     }
 }
