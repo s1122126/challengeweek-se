@@ -73,4 +73,21 @@ public class PlayerFactory implements EntityFactory {
                                 getAppWidth(), getAppHeight()), 50))
                 .build();
     }
+    @Spawns("ground")
+    public Entity newGround(SpawnData data){
+        return entityBuilder()
+                .type(EntityType.GROUND)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
+    @Spawns("platform")
+    public Entity newPlatform(SpawnData data){
+        return entityBuilder()
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
 }

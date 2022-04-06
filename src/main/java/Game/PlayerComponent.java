@@ -8,10 +8,10 @@ import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-import static com.almasb.fxgl.dsl.FXGL.image;
-
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class PlayerComponent extends Component {
+
     private PhysicsComponent physics;
     private int jumps = 2;
     private AnimatedTexture texture;
@@ -19,7 +19,7 @@ public class PlayerComponent extends Component {
 
     public PlayerComponent() {
 
-        Image image = image("player.png");
+        Image image = image("mario.png");
 
         animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 1, 1);
         animWalk = new AnimationChannel(image, 4, 32, 42, Duration.seconds(0.66), 0, 3);
