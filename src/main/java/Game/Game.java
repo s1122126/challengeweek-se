@@ -4,6 +4,8 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.input.virtual.VirtualButton;
 import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -48,10 +50,41 @@ public class Game extends GameApplication {
 
     @Override
     protected void initInput() {
-        onKey(KeyCode.W, () -> player.translateY(-5));
-        onKey(KeyCode.S, () -> player.translateY(5));
-        onKey(KeyCode.A, () -> player.translateX(-5));
-        onKey(KeyCode.D, () -> player.translateX(5));
+//        onKey(KeyCode.W, () -> player.translateY(-5));
+//        onKey(KeyCode.S, () -> player.translateY(5));
+//        onKey(KeyCode.A, () -> player.translateX(-5));
+//        onKey(KeyCode.D, () -> player.translateX(5));
+
+        getInput().addAction(new UserAction("Left") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).left();
+            }
+
+            @Override
+            protected void onActionEnd() {
+                player.getComponent(PlayerComponent.class).stop();
+            }
+        }, KeyCode.A, VirtualButton.LEFT);
+
+        getInput().addAction(new UserAction("Right") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).right();
+            }
+
+            @Override
+            protected void onActionEnd() {
+                player.getComponent(PlayerComponent.class).stop();
+            }
+        }, KeyCode.D, VirtualButton.RIGHT);
+
+        getInput().addAction(new UserAction("Jump") {
+            @Override
+            protected void onActionBegin() {
+                player.getComponent(PlayerComponent.class).jump();
+            }
+        }, KeyCode.W, VirtualButton.A);
         onBtnDown(MouseButton.PRIMARY, () ->
                 spawn("bullet", player.getCenter()));
     }

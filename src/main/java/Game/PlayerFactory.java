@@ -14,6 +14,8 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.physics.PhysicsComponent;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -24,10 +26,15 @@ public class PlayerFactory implements EntityFactory {
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
+
+        PhysicsComponent physics = new PhysicsComponent();
+
         return entityBuilder()
                 .from(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
+                .with(new PlayerComponent())
+                .with(physics)
                 .collidable()
                 .build();
     }
