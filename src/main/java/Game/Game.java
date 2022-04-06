@@ -34,6 +34,8 @@ public class Game extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
+        settings.setHeight(750);
+        settings.setWidth(1000);
         settings.setTitle("The Four Nerds and the Social Adventures of Terror");
     }
 
@@ -42,7 +44,7 @@ public class Game extends GameApplication {
         getGameWorld().addEntityFactory(this.playerFactory);
 
         // Add the player
-        this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
+        this.player = spawn("player", 50, 650);
 
         // Add a new enemy every second
         run(() -> spawn("enemy"), Duration.seconds(1.0));
