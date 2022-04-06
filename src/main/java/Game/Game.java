@@ -2,8 +2,10 @@ package Game;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.entity.level.tiled.TiledMap;
 import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -37,7 +39,7 @@ public class Game extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(this.playerFactory);
-
+        setLevelFromMap("level.tmx");
         // Add the player
         this.player = spawn("player", 50, 650);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
