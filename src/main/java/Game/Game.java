@@ -15,6 +15,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
@@ -22,7 +23,9 @@ import javafx.util.Duration;
 public class Game extends GameApplication {
 
     private final PlayerFactory playerFactory = new PlayerFactory();
+    private final Ninja ninja1 = new Ninja(300, 300);
     private Entity player;
+    private Entity ninja;
 
     public static void main(String[] args) {
         launch(args);
@@ -45,9 +48,9 @@ public class Game extends GameApplication {
 
         // Add the player
         this.player = spawn("player", 50, 650);
-
+        this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
         // Add a new enemy every second
-        run(() -> spawn("enemy"), Duration.seconds(1.0));
+
     }
 
 
