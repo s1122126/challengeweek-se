@@ -14,6 +14,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import enemy.Ninja;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -21,6 +22,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class PlayerFactory implements EntityFactory {
+
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
@@ -49,7 +51,7 @@ public class PlayerFactory implements EntityFactory {
     }
 
     @Spawns("enemy")
-    public Entity newEnemy(SpawnData data) {
+    public Entity newEnemy(SpawnData data, int movementSpeed) {
         Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
