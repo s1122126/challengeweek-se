@@ -33,8 +33,8 @@ public class PlayerFactory implements EntityFactory {
                 .from(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
-                .with(new PlayerComponent())
                 .with(physics)
+                .with(new PlayerComponent())
                 .collidable()
                 .build();
     }

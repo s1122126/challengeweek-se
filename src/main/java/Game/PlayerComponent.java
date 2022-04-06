@@ -19,7 +19,7 @@ public class PlayerComponent extends Component {
 
     public PlayerComponent() {
 
-        Image image = image("player.png");
+        Image image = image("mario.png");
 
         animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 1, 1);
         animWalk = new AnimationChannel(image, 4, 32, 42, Duration.seconds(0.66), 0, 3);
