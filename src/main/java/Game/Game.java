@@ -41,7 +41,7 @@ public class Game extends GameApplication {
         getGameWorld().addEntityFactory(this.playerFactory);
         setLevelFromMap("Level.tmx");
         // Add the player
-        this.player = spawn("player", 50, 650);
+        this.player = spawn("player", 100, 600);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
         // Add a new enemy every second
 
@@ -73,45 +73,6 @@ public class Game extends GameApplication {
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //import com.almasb.fxgl.app.GameApplication;
 //import com.almasb.fxgl.app.GameSettings;
