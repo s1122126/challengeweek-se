@@ -22,16 +22,16 @@
  </layer>
  <objectgroup id="5" name="Objectlaag 1">
   <object id="1" name="Ground" type="ground" x="1" y="128" width="1278.5" height="33"/>
-  <object id="3" name="Platform" type="ground" x="736" y="64.5" width="64" height="14"/>
-  <object id="4" name="Platform" type="ground" x="496" y="32" width="112" height="15"/>
-  <object id="5" name="Platform" type="ground" x="304" y="64" width="143.5" height="15.5"/>
-  <object id="6" name="Wall" type="ground" x="800" y="48.5" width="16" height="48.5"/>
-  <object id="7" name="Wall" type="ground" x="816" y="31.75" width="15.75" height="32"/>
-  <object id="8" name="Wall" type="ground" x="832.25" y="16" width="63.5" height="31.75"/>
-  <object id="9" name="Wall" type="ground" x="848" y="0" width="31.5" height="15.75"/>
-  <object id="10" name="Wall" type="ground" x="896.25" y="32" width="15.5" height="31.75"/>
-  <object id="12" name="Wall" type="ground" x="911.75" y="48" width="16" height="48"/>
-  <object id="13" name="Top of temple" type="ground" x="1039.67" y="0.333333" width="192" height="15"/>
+  <object id="3" name="Platform" type="platform" x="736" y="64.5" width="64" height="14"/>
+  <object id="4" name="Platform" type="platform" x="496" y="32" width="112" height="15"/>
+  <object id="5" name="Platform" type="platform" x="304" y="64" width="143.5" height="15.5"/>
+  <object id="6" name="Wall" type="wall" x="800" y="48.5" width="16" height="48.5"/>
+  <object id="7" name="Wall" type="wall" x="816" y="31.75" width="15.75" height="32"/>
+  <object id="8" name="Wall" type="wall" x="832.25" y="16" width="63.5" height="31.75"/>
+  <object id="9" name="Wall" type="wall" x="848" y="0" width="31.5" height="15.75"/>
+  <object id="10" name="Wall" type="wall" x="896.25" y="32" width="15.5" height="31.75"/>
+  <object id="12" name="Wall" type="wall" x="911.75" y="48" width="16" height="48"/>
+  <object id="13" name="Top of temple" type="platform" x="1039.67" y="0.333333" width="192" height="15"/>
  </objectgroup>
  <layer id="4" name="fortress bg" width="80" height="10">
   <data encoding="csv">

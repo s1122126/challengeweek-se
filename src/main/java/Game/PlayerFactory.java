@@ -98,4 +98,12 @@ public class PlayerFactory implements EntityFactory {
                 .with(new PhysicsComponent())
                 .build();
     }
+    @Spawns("wall")
+    public Entity newWalls(SpawnData data){
+        return entityBuilder()
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
 }
