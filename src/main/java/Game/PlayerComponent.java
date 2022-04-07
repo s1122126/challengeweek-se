@@ -38,13 +38,13 @@ public class PlayerComponent extends Component {
 
 
     public void left() {
-        getEntity().setScaleX(-1);
+//        getEntity().setScaleX(-1);
         physics.setVelocityX(-170);
 
     }
 
     public void right() {
-        getEntity().setScaleX(1);
+//        getEntity().setScaleX(1);
         physics.setVelocityX(170);
     }
 
