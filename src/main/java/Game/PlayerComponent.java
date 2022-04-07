@@ -32,7 +32,7 @@ public class PlayerComponent extends Component {
 
         physics.onGroundProperty().addListener((obs, old, isOnGround) -> {
             if (isOnGround) {
-                jumps = 1  ;
+                jumps = 1;
             }
         });
     }
