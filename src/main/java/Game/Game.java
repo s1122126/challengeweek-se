@@ -31,7 +31,7 @@ public class Game extends GameApplication {
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setHeight(1000);
-        settings.setWidth(8000);
+        settings.setWidth(2000);
         settings.setTitle("The Four Nerds and the Social Adventures of Terror");
     }
 
