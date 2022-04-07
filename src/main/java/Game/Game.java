@@ -40,7 +40,7 @@ public class Game extends GameApplication {
         Viewport viewport = getGameScene().getViewport();
 
         getGameWorld().addEntityFactory(this.playerFactory);
-        setLevelFromMap("testlevel.tmx");
+        setLevelFromMap("LevelSamurai.tmx");
 //        setLevelFromMap("Level1.tmx");
 
 
@@ -62,7 +62,7 @@ public class Game extends GameApplication {
     @Override
     protected void initInput() {
         onKey(KeyCode.SPACE, () -> player.getComponent(PlayerComponent.class).jump());
-//        onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).()
+        onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).jump());
         onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left());
         onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right());
         onBtnDown(MouseButton.PRIMARY, () ->
