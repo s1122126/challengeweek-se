@@ -50,7 +50,7 @@ public class Game extends GameApplication {
         getAudioPlayer().playMusic(music);
 
         // Add the player
-        this.player = spawn("player", 100, 600);
+        this.player = spawn("player", 100, 1);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
         // set view to player
         viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
