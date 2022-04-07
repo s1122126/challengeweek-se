@@ -18,6 +18,7 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -29,8 +30,11 @@ public class PlayerFactory implements EntityFactory {
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
+        FixtureDef fix = new FixtureDef();
+        fix.friction(5);
         physics.setBodyType(BodyType.DYNAMIC);
         physics.addGroundSensor(new HitBox("GROUND_SENSOR", new Point2D(16, 38), BoundingShape.box(6, 8)));
+        physics.setFixtureDef(fix);
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(15, 15, Color.BLUE))
