@@ -92,11 +92,8 @@ public class Game extends GameApplication {
 
         }, KeyCode.D, VirtualButton.RIGHT);
 
-
-
         onBtnDown(MouseButton.PRIMARY, () -> {
-                    spawn("bullet",
-                            player.getCenter());
+                    spawn("bullet", player.getCenter());
 
                     getAudioPlayer().playSound(shootSound);
                 });
