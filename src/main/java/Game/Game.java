@@ -3,15 +3,25 @@ package Game;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import static com.almasb.fxgl.dsl.FXGL.*;
+
+import com.almasb.fxgl.audio.Music;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.level.tiled.TiledMap;
+import javafx.scene.paint.CycleMethod;
 import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
+import javafx.animation.Animation;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Game extends GameApplication {
 
@@ -39,12 +49,17 @@ public class Game extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(this.playerFactory);
-        setLevelFromMap("Level.tmx");
+//        setLevelFromMap("Level1.tmx");
+
+
+        //music
+        Music music = getAssetLoader().loadMusic("Music.wav");
+
+        getAudioPlayer().playMusic(music);
+
         // Add the player
         this.player = spawn("player", 100, 600);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
-        // Add a new enemy every second
-
     }
 
 
