@@ -9,7 +9,6 @@ import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.input.virtual.VirtualButton;
-import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
