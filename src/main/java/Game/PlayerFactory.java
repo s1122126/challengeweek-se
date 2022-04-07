@@ -73,6 +73,7 @@ public class PlayerFactory implements EntityFactory {
                                 getAppWidth(), getAppHeight()), 50))
                 .build();
     }
+
     @Spawns("ground")
     public Entity newGround(SpawnData data){
         return entityBuilder()
