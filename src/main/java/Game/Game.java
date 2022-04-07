@@ -61,7 +61,7 @@ public class Game extends GameApplication {
 
     @Override
     protected void initInput() {
-        onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).jump());
+        onKey(KeyCode.SPACE, () -> player.getComponent(PlayerComponent.class).jump());
 //        onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).()
         onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left());
         onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right());
