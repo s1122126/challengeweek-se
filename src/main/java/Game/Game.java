@@ -54,12 +54,14 @@ public class Game extends GameApplication {
         // set view to player
         viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
         viewport.setLazy(true);
+        enemy.getComponent(EnemyController.class).onUpdate(1);
 
 
     }
 
     @Override
     protected void initInput() {
+
         getInput().addAction(new UserAction("Up") {
             @Override
             protected void onActionBegin() {
@@ -88,6 +90,7 @@ public class Game extends GameApplication {
         }, KeyCode.D, VirtualButton.RIGHT);
         onBtnDown(MouseButton.PRIMARY, () ->
                 spawn("bullet", player.getCenter()));
+
     }
 
     @Override

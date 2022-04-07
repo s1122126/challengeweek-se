@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.image;
+import static com.almasb.fxgl.dsl.FXGL.onCollisionBegin;
 
 public class EnemyController extends Component{
     private AnimationChannel animWalk;
@@ -26,6 +27,9 @@ public class EnemyController extends Component{
     private final Texture right;
     private final Texture upDown;
 
+
+    private static final int SPEED = 140;
+
     public EnemyController(double x, double y) {
         Image image = image("mario.png");
         animWalk = new AnimationChannel(image, 4, 32, 42,Duration.seconds(0.66), 0, 3);
@@ -35,26 +39,18 @@ public class EnemyController extends Component{
         right = FXGL.texture("mario");
         upDown = FXGL.texture("mario");
     }
-
+    @Override
     public void onAdded() {
         entity.getTransformComponent().setScaleOrigin(new Point2D(16, 21));
+
+
     }
+    @Override
+    public void onUpdate(double tpf){
+        physics.setVelocityX(-SPEED);
 
 
-    public void left() {
-        getEntity().setScaleX(-1);
-        physics.setVelocityX(-170);
     }
-
-    public void right() {
-        getEntity().setScaleX(1);
-        physics.setVelocityX(170);
-    }
-
-//    public void stop() {
-//        physics.setVelocityX(0);
-//    }
-
     public void jump() {
         if (jumps == 0)
             return;
