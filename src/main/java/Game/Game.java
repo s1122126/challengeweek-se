@@ -5,13 +5,11 @@ import com.almasb.fxgl.app.GameSettings;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 import com.almasb.fxgl.app.scene.Viewport;
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.EntityFactory;
-import com.almasb.fxgl.entity.level.tiled.TiledMap;
 import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import javafx.util.Duration;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
@@ -43,9 +41,16 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
         setLevelFromMap("testlevel.tmx");
+//        setLevelFromMap("Level1.tmx");
+
+
+        //music
+        Music music = getAssetLoader().loadMusic("Music.wav");
+
+        getAudioPlayer().playMusic(music);
 
         // Add the player
-        this.player = spawn("player", 50, 650);
+        this.player = spawn("player", 100, 600);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
         // set view to player
         viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
@@ -53,7 +58,6 @@ public class Game extends GameApplication {
 
 
     }
-
 
     @Override
     protected void initInput() {
@@ -80,94 +84,3 @@ public class Game extends GameApplication {
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//import com.almasb.fxgl.app.GameApplication;
-//import com.almasb.fxgl.app.GameSettings;
-//import com.almasb.fxgl.dsl.FXGL;
-//import com.almasb.fxgl.entity.Entity;
-//import javafx.scene.input.KeyCode;
-//import javafx.scene.paint.Color;
-//import javafx.scene.shape.Rectangle;
-//
-//public class Game extends GameApplication {
-//
-//    private Entity player;
-//
-//    @Override
-//    protected void initSettings(GameSettings gameSettings) {
-//        gameSettings.setVersion("1.0");
-//        gameSettings.setTitle("The Four Nerds and the Social Adventures of Terror");
-//        gameSettings.setHeight(800);
-//        gameSettings.setWidth(800);
-//    }
-//
-//    @Override
-//    protected void initGame(){
-//        player = FXGL.entityBuilder()
-//                .at(200, 200)
-//                .view("mario.png")
-//                .buildAndAttach();
-//    }
-//
-//    @Override
-//    protected void initInput(){
-//        FXGL.onKey(KeyCode.W, () -> {
-//            player.translateY(-5);
-//        });
-//
-//        FXGL.onKey(KeyCode.A, () -> {
-//            player.translateX(-5);
-//        });
-//
-//        FXGL.onKey(KeyCode.S, () -> {
-//            player.translateY(5);
-//        });
-//
-//        FXGL.onKey(KeyCode.D, () -> {
-//            player.translateX(5);
-//        });
-//    }
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-//}
