@@ -13,7 +13,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class PlayerComponent extends Component {
 
     private PhysicsComponent physics;
-    private int jumps = 2;
+    private int jumps = 1;
     private AnimatedTexture texture;
     private AnimationChannel animIdle, animWalk;
 
