@@ -40,8 +40,8 @@ public class Game extends GameApplication {
         Viewport viewport = getGameScene().getViewport();
 
         getGameWorld().addEntityFactory(this.playerFactory);
-        setLevelFromMap("testlevel.tmx");
-//        setLevelFromMap("Level1.tmx");
+//        setLevelFromMap("testlevel.tmx");
+        setLevelFromMap("Level1.tmx");
 
 
         //music
