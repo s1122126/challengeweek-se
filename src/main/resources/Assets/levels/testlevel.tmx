@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="10">
  <tileset firstgid="1" name="Game Boy Advance - Metroid Fusion - Sector 1 Tile Map1" tilewidth="16" tileheight="16" tilecount="5936" columns="112">
   <image source="Game Boy Advance - Metroid Fusion - Sector 1 Tile Map.png" width="1792" height="848"/>
  </tileset>
@@ -17,4 +17,7 @@
 870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872,873,874,875,876,870,871,872
 </data>
  </layer>
+ <objectgroup id="2" name="Objectlaag 1">
+  <object id="8" type="ground" x="2.66667" y="132" width="1277.33" height="28"/>
+ </objectgroup>
 </map>
