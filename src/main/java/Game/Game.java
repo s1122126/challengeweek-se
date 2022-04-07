@@ -61,10 +61,10 @@ public class Game extends GameApplication {
 
     @Override
     protected void initInput() {
-        onKey(KeyCode.W, () -> player.translateY(-5));
-        onKey(KeyCode.S, () -> player.translateY(5));
-        onKey(KeyCode.A, () -> player.translateX(-5));
-        onKey(KeyCode.D, () -> player.translateX(5));
+        onKey(KeyCode.W, () -> player.getComponent(PlayerComponent.class).jump());
+//        onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).()
+        onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left());
+        onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right());
         onBtnDown(MouseButton.PRIMARY, () ->
                 spawn("bullet", player.getCenter()));
     }
