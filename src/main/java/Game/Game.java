@@ -7,6 +7,8 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.input.virtual.VirtualButton;
 import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -61,7 +63,12 @@ public class Game extends GameApplication {
 
     @Override
     protected void initInput() {
-        onKey(KeyCode.SPACE, () -> player.getComponent(PlayerComponent.class).jump());
+        getInput().addAction(new UserAction("Up") {
+            @Override
+            protected void onActionBegin() {
+                player.getComponent(PlayerComponent.class).jump();
+            }
+        }, KeyCode.SPACE, VirtualButton.UP);
 //        onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).()
         onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left());
         onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right());

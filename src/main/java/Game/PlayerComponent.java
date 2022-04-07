@@ -13,7 +13,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class PlayerComponent extends Component {
 
     private PhysicsComponent physics;
-    private int jumps = 2;
+    private int jumps = 1;
     private AnimatedTexture texture;
     private AnimationChannel animIdle, animWalk;
 
@@ -32,7 +32,7 @@ public class PlayerComponent extends Component {
 
         physics.onGroundProperty().addListener((obs, old, isOnGround) -> {
             if (isOnGround) {
-                jumps = 2;
+                jumps = 1  ;
             }
         });
     }
@@ -41,6 +41,7 @@ public class PlayerComponent extends Component {
     public void left() {
         getEntity().setScaleX(-1);
         physics.setVelocityX(-170);
+
     }
 
     public void right() {
