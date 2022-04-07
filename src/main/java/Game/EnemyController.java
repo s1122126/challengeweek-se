@@ -51,22 +51,6 @@ public class EnemyController extends Component{
 
 
     }
-
-
-    public void left() {
-        getEntity().setScaleX(-1);
-        physics.setVelocityX(-170);
-    }
-
-    public void right() {
-        getEntity().setScaleX(1);
-        physics.setVelocityX(170);
-    }
-
-//    public void stop() {
-//        physics.setVelocityX(0);
-//    }
-
     public void jump() {
         if (jumps == 0)
             return;
