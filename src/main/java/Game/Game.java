@@ -33,6 +33,8 @@ public class Game extends GameApplication {
         settings.setHeight(1000);
         settings.setWidth(2000);
         settings.setTitle("The Four Nerds and the Social Adventures of Terror");
+        settings.setMainMenuEnabled(true);
+        settings.setSceneFactory(new UIFactory());
     }
 
     @Override
