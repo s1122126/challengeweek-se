@@ -33,7 +33,7 @@ public class PlayerFactory implements EntityFactory {
         physics.addGroundSensor(new HitBox("GROUND_SENSOR", new Point2D(16, 38), BoundingShape.box(6, 8)));
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
+                .viewWithBBox(new Rectangle(15, 15, Color.BLUE))
                 .collidable()
                 .with(physics)
                 .with(new PlayerComponent())
