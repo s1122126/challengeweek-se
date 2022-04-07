@@ -3,6 +3,8 @@ package Game;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import static com.almasb.fxgl.dsl.FXGL.*;
+
+import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.level.tiled.TiledMap;
@@ -30,20 +32,25 @@ public class Game extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setHeight(750);
-        settings.setWidth(1000);
+        settings.setHeight(1000);
+        settings.setWidth(8000);
         settings.setTitle("The Four Nerds and the Social Adventures of Terror");
-        settings.setAppIcon("");
     }
 
     @Override
     protected void initGame() {
+        Viewport viewport = getGameScene().getViewport();
+
         getGameWorld().addEntityFactory(this.playerFactory);
-        setLevelFromMap("Level.tmx");
+        setLevelFromMap("testlevel.tmx");
+
         // Add the player
         this.player = spawn("player", 50, 650);
         this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
-        // Add a new enemy every second
+        // set view to player
+        viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
+        viewport.setLazy(true);
+
 
     }
 
