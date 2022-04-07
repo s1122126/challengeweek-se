@@ -7,18 +7,15 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
-import enemy.Ninja;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-
-import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Game extends GameApplication {
 
     private final PlayerFactory playerFactory = new PlayerFactory();
-    private final Ninja ninja1 = new Ninja(300, 300);
+
     private Entity player;
-    private Entity ninja;
+    private Entity enemy;
 
     public static void main(String[] args) {
         launch(args);
@@ -51,7 +48,7 @@ public class Game extends GameApplication {
 
         // Add the player
         this.player = spawn("player", 100, 1);
-        this.ninja = spawn("enemy", ninja1.getSpawnX(), ninja1.getSpawnY());
+        this.enemy = spawn("enemy", 300, 1);
         // set view to player
         viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
         viewport.setLazy(true);

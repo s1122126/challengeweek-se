@@ -62,15 +62,16 @@ public class PlayerFactory implements EntityFactory {
         Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
 
         return entityBuilder()
                 .from(data)
                 .type(EntityType.ENEMY)
                 .viewWithBBox(circle)
                 .collidable()
-                .with(new RandomMoveComponent(
-                        new Rectangle2D(0, 0,
-                                getAppWidth(), getAppHeight()), 50))
+                .with(physics)
+                .with(new EnemyController(data.getX(), data.getY()))
                 .build();
     }
     @Spawns("ground")
