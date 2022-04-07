@@ -19,7 +19,7 @@ public class PlayerComponent extends Component {
 
     public PlayerComponent() {
 
-        Image image = image("mario3.png");
+        Image image = image("mario.png");
 
         animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 1, 1);
         animWalk = new AnimationChannel(image, 4, 32, 42, Duration.seconds(0.66), 0, 3);
@@ -39,13 +39,13 @@ public class PlayerComponent extends Component {
 
 
     public void left() {
-//        getEntity().setScaleX(-1);
+        getEntity().setScaleX(-1);
         physics.setVelocityX(-170);
 
     }
 
     public void right() {
-//        getEntity().setScaleX(1);
+        getEntity().setScaleX(1);
         physics.setVelocityX(170);
     }
 
@@ -57,7 +57,7 @@ public class PlayerComponent extends Component {
         if (jumps == 0)
             return;
 
-        physics.setVelocityY(-330);
+        physics.setVelocityY(-300);
 
         jumps--;
     }
