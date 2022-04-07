@@ -30,11 +30,8 @@ public class PlayerFactory implements EntityFactory {
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
-        FixtureDef fix = new FixtureDef();
-        fix.friction(5);
         physics.setBodyType(BodyType.DYNAMIC);
         physics.addGroundSensor(new HitBox("GROUND_SENSOR", new Point2D(16, 38), BoundingShape.box(6, 8)));
-        physics.setFixtureDef(fix);
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(16, 16, Color.TRANSPARENT))
@@ -82,6 +79,10 @@ public class PlayerFactory implements EntityFactory {
 
     @Spawns("ground")
     public Entity newGround(SpawnData data){
+        PhysicsComponent physics = new PhysicsComponent();
+        FixtureDef fix = new FixtureDef();
+        fix.friction(5);
+        physics.setFixtureDef(fix);
         return entityBuilder()
                 .type(EntityType.GROUND)
                 .from(data)

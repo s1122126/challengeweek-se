@@ -66,9 +66,26 @@ public class Game extends GameApplication {
                 player.getComponent(PlayerComponent.class).jump();
             }
         }, KeyCode.SPACE, VirtualButton.UP);
-//        onKey(KeyCode.S, () -> player.getComponent(PlayerComponent.class).()
-        onKey(KeyCode.A, () -> player.getComponent(PlayerComponent.class).left());
-        onKey(KeyCode.D, () -> player.getComponent(PlayerComponent.class).right());
+        getInput().addAction(new UserAction("left") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).left();
+            }
+            @Override
+            protected void onActionEnd() {
+                player.getComponent(PlayerComponent.class).stop();
+            }
+        }, KeyCode.A, VirtualButton.LEFT);
+        getInput().addAction(new UserAction("right") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).right();
+            }
+            @Override
+            protected void onActionEnd() {
+                player.getComponent(PlayerComponent.class).stop();
+            }
+        }, KeyCode.D, VirtualButton.RIGHT);
         onBtnDown(MouseButton.PRIMARY, () ->
                 spawn("bullet", player.getCenter()));
     }
