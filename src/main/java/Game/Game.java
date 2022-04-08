@@ -41,6 +41,7 @@ public class Game extends GameApplication {
 //        setLevelFromMap("testlevel.tmx");
 //        setLevelFromMap("Level_cave.tmx");
 //        setLevelFromMap("witchlevel.tmx");
+        setLevelFromMap("LevelSamurai.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
@@ -125,6 +126,30 @@ public class Game extends GameApplication {
         });
         onCollisionBegin(EntityType.WALL, EntityType.ENEMY, (wall, enemy) -> {
             enemy.getComponent(EnemyController.class).turn();
+        });
+        onCollisionBegin(EntityType.PLAYER, EntityType.GEM1, (bullet, ground) -> {
+            Viewport viewport = getGameScene().getViewport();
+
+//        setLevelFromMap("testlevel.tmx");
+            setLevelFromMap("Level_cave.tmx");
+            //music
+            Music music = getAssetLoader().loadMusic("Music.wav");
+
+            getAudioPlayer().playMusic(music);
+
+            // Add the player
+            this.player = spawn("player", 100, 1);
+            this.enemy = spawn("enemy", 600, 1);
+            // set view to player
+            viewport.setBounds(0,0,2000,1000);
+            viewport.setZoom(6.25);
+            viewport.bindToEntity(this.player,  getAppWidth() / 2, (getAppHeight() / 2) + 300);
+
+            viewport.setBounds(0,0,1280,1000);
+            viewport.setZoom(6.25);
+            viewport.bindToEntity(this.player, getAppWidth() / 2, (getAppHeight() / 2) + 300);
+
+            viewport.setLazy(true);
         });
     }
 }

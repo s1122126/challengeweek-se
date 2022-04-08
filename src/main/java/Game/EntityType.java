@@ -1,5 +1,5 @@
 package Game;
 
 public enum EntityType {
-    PLAYER, BULLET, ENEMY, GROUND, WALL, PLATFORM, DIRT,
+    PLAYER, BULLET, ENEMY, GROUND, WALL, PLATFORM, DIRT, GEM1,
 }
