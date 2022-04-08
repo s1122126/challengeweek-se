@@ -38,7 +38,7 @@ public class PlayerFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(157, 282, Color.TRANSPARENT))
-                .view("Archer.png")
+                .view("mario.png")
                 .collidable()
                 .with(physics)
                 .with(new PlayerComponent())
