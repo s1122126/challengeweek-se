@@ -25,7 +25,7 @@ public class Game extends GameApplication {
     }
 
     public enum EntityType {
-        PLAYER, BULLET, ENEMY, GROUND
+        PLAYER, BULLET, ENEMY, GROUND, PLATFORM, WALL
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
 //        setLevelFromMap("testlevel.tmx");
-        setLevelFromMap("Level1.tmx");
+        setLevelFromMap("RomanLevel.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
@@ -54,8 +54,8 @@ public class Game extends GameApplication {
         this.player = spawn("player", 100, 1);
         this.enemy = spawn("enemy", 300, 1);
         // set view to player
-        viewport.setBounds(0,0,2000,1000);
-        viewport.setZoom(6.25);
+//        viewport.setBounds(0,0,2000,1000);
+//        viewport.setZoom(6.25);
         viewport.bindToEntity(this.player, getAppWidth() / 2, (getAppHeight() / 2) + 300);
         viewport.setLazy(true);
     }
@@ -111,5 +111,8 @@ public class Game extends GameApplication {
         });
 
         onCollisionBegin(EntityType.ENEMY, EntityType.PLAYER, (enemy, player) -> showMessage("You Died!", () -> getGameController().startNewGame()));
+        onCollisionBegin(EntityType.PLATFORM, EntityType.ENEMY, (platform, enemy) -> {
+            enemy.getComponent(EnemyController.class).turn();
+        });
     }
 }

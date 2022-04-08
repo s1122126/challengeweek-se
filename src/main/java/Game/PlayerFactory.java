@@ -95,8 +95,10 @@ public class PlayerFactory implements EntityFactory {
     public Entity newPlatform(SpawnData data){
         return entityBuilder()
                 .from(data)
+                .type(EntityType.PLATFORM)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
+                .collidable()
                 .build();
     }
     @Spawns("wall")
