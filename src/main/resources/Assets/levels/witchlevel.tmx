@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="44">
- <tileset firstgid="1" name="Game Boy Advance - Metroid Fusion - Sector 1 Tile Map1" tilewidth="16" tileheight="16" tilecount="5936" columns="112">
-  <image source="Game Boy Advance - Metroid Fusion - Sector 1 Tile Map.png" width="1792" height="848"/>
- </tileset>
+ <tileset firstgid="1" source="Game Boy Advance - Metroid Fusion - Sector 1 Tile Map.tsx"/>
  <layer id="3" name="Tilelaag 1" width="80" height="10">
   <data encoding="csv">
 95,427,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,421,420,
@@ -33,7 +31,7 @@
   <object id="25" type="ground" x="1232" y="48" width="16" height="112"/>
   <object id="33" type="ground" x="1248" y="144" width="32" height="16"/>
   <object id="34" type="wall" x="0" y="0" width="16" height="160"/>
-  <object id="35" type="ceiling" x="16" y="0" width="1264.18" height="16"/>
+  <object id="35" type="platform" x="16" y="0" width="1264.18" height="16"/>
   <object id="36" type="wall" x="1264" y="16" width="16" height="128"/>
   <object id="37" x="1338" y="140.333" height="0.333333"/>
  </objectgroup>
