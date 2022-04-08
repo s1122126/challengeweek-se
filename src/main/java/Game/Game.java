@@ -24,10 +24,6 @@ public class Game extends GameApplication {
         launch(args);
     }
 
-    public enum EntityType {
-        PLAYER, BULLET, ENEMY, GROUND, PLATFORM, WALL
-    }
-
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setHeight(1000);
@@ -43,7 +39,8 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
 //        setLevelFromMap("testlevel.tmx");
-        setLevelFromMap("Level_cave.tmx");
+//        setLevelFromMap("Level_cave.tmx");
+//        setLevelFromMap("witchlevel.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
@@ -128,7 +125,7 @@ public class Game extends GameApplication {
         });
 
         onCollisionBegin(EntityType.ENEMY, EntityType.PLAYER, (enemy, player) -> showMessage("You Died!", () -> getGameController().startNewGame()));
-        onCollisionBegin(EntityType.PLATFORM, EntityType.ENEMY, (platform, enemy) -> {
+        onCollisionBegin(EntityType.GROUND, EntityType.ENEMY, (platform, enemy) -> {
             enemy.getComponent(EnemyController.class).turn();
         });
         onCollisionBegin(EntityType.WALL, EntityType.ENEMY, (wall, enemy) -> {

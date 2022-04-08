@@ -6,7 +6,6 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
-import Game.Game.EntityType;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.dsl.components.RandomMoveComponent;
@@ -90,6 +89,19 @@ public class PlayerFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
                 .collidable()
+                .build();
+    }
+
+    @Spawns("dirt")
+    public Entity newDirt(SpawnData data){
+        PhysicsComponent physics = new PhysicsComponent();
+
+        return entityBuilder()
+                .type(EntityType.DIRT)
+                .from(data)
+                .collidable()
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
                 .build();
     }
     @Spawns("platform")
