@@ -38,7 +38,7 @@ public class PlayerFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox(new Rectangle(157, 282, Color.TRANSPARENT))
-                .view("Archer.png")
+                .view("mario.png")
                 .collidable()
                 .with(physics)
                 .with(new PlayerComponent())
@@ -55,7 +55,7 @@ public class PlayerFactory implements EntityFactory {
         return entityBuilder()
                 .from(data)
                 .type(EntityType.BULLET)
-                .viewWithBBox(new Rectangle(10, 2, Color.BLACK))
+                .viewWithBBox(new Rectangle(10, 2, Color.WHITE))
                 .collidable()
                 .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
@@ -85,10 +85,11 @@ public class PlayerFactory implements EntityFactory {
         PhysicsComponent physics = new PhysicsComponent();
 
         return entityBuilder()
-                .type(EntityType.GROUND)
                 .from(data)
+                .type(EntityType.GROUND)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
+                .collidable()
                 .build();
     }
     @Spawns("platform")
