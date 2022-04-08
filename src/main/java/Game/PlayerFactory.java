@@ -64,7 +64,7 @@ public class PlayerFactory implements EntityFactory {
 
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-        Circle circle = new Circle(20, 20, 20, Color.RED);
+        Circle circle = new Circle(10, 10, 10, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         PhysicsComponent physics = new PhysicsComponent();

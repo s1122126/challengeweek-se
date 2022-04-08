@@ -43,7 +43,7 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
 //        setLevelFromMap("testlevel.tmx");
-        setLevelFromMap("RomanLevel.tmx");
+        setLevelFromMap("Level_cave.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
@@ -57,6 +57,11 @@ public class Game extends GameApplication {
 //        viewport.setBounds(0,0,2000,1000);
 //        viewport.setZoom(6.25);
         viewport.bindToEntity(this.player,  getAppWidth() / 2, (getAppHeight() / 2) + 300);
+
+        viewport.setBounds(0,0,2000,1000);
+        viewport.setZoom(6.25);
+        viewport.bindToEntity(this.player, getAppWidth() / 2, (getAppHeight() / 2) + 300);
+
         viewport.setLazy(true);
     }
 
@@ -117,6 +122,7 @@ public class Game extends GameApplication {
         onCollisionBegin(EntityType.WALL, EntityType.ENEMY, (wall, enemy) -> {
             enemy.getComponent(EnemyController.class).turn();
         });
+
 
 
     }
