@@ -115,6 +115,18 @@ public class Game extends GameApplication {
             enemy.removeFromWorld();
         });
 
+        onCollisionBegin(EntityType.BULLET, EntityType.GROUND, (bullet, ground) -> {
+            bullet.removeFromWorld();
+        });
+
+        onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
+            bullet.removeFromWorld();
+        });
+
+        onCollisionBegin(EntityType.BULLET, EntityType.PLATFORM, (bullet, platform) -> {
+            bullet.removeFromWorld();
+        });
+
         onCollisionBegin(EntityType.ENEMY, EntityType.PLAYER, (enemy, player) -> showMessage("You Died!", () -> getGameController().startNewGame()));
         onCollisionBegin(EntityType.PLATFORM, EntityType.ENEMY, (platform, enemy) -> {
             enemy.getComponent(EnemyController.class).turn();
