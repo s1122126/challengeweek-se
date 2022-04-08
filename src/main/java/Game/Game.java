@@ -134,8 +134,5 @@ public class Game extends GameApplication {
         onCollisionBegin(EntityType.WALL, EntityType.ENEMY, (wall, enemy) -> {
             enemy.getComponent(EnemyController.class).turn();
         });
-
-
-
     }
 }
