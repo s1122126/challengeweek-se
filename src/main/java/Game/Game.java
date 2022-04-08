@@ -43,7 +43,7 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
 //        setLevelFromMap("testlevel.tmx");
-        setLevelFromMap("RomanLevel.tmx");
+        setLevelFromMap("LevelSamurai.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
