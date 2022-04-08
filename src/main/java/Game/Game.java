@@ -50,15 +50,11 @@ public class Game extends GameApplication {
         // Add the player
         this.player = spawn("player", 100, 1);
         this.enemy = spawn("enemy", 300, 1);
-        // set view to player
-        viewport.setBounds(0,0,2000,1000);
-        viewport.setZoom(6.25);
-        viewport.bindToEntity(this.player,  getAppWidth() / 2, (getAppHeight() / 2) + 300);
 
+        // set view to player
         viewport.setBounds(0,0,1280,1000);
         viewport.setZoom(6.25);
         viewport.bindToEntity(this.player, getAppWidth() / 2, (getAppHeight() / 2) + 300);
-
         viewport.setLazy(true);
     }
 
@@ -94,7 +90,6 @@ public class Game extends GameApplication {
             protected void onActionEnd() {
                 player.getComponent(PlayerComponent.class).stop();
             }
-
         }, KeyCode.D, VirtualButton.RIGHT);
 
         onBtnDown(MouseButton.PRIMARY, () -> {

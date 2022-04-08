@@ -19,7 +19,7 @@ public class MainMenu extends FXGLMenu {
         int width = getAppWidth();
         int height = getAppHeight();
 //        var bg = new Rectangle(width, height, Color.RED);
-        BackgroundImage mainBackground = new BackgroundImage(new Image("Assets/Textures/main_menu_background.png", FXGL.getAppHeight(), FXGL.getAppWidth() * 1.8, true, true),
+        BackgroundImage mainBackground = new BackgroundImage(new Image("assets/textures/main_menu_background.png", FXGL.getAppHeight(), FXGL.getAppWidth() * 1.8, true, true),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -47,6 +47,10 @@ public class MainMenu extends FXGLMenu {
         vBox2.setBackground(new Background(mainBackground));
         TextField text = new TextField("Enter your name");
         vBox2.getChildren().add(text);
+        vBox2.setAlignment(Pos.CENTER);
+        text.setMaxWidth(250);
+        vBox2.setMinWidth(width);
+        vBox2.setMinHeight(height);
 
         Button button = new Button("Start");
         button.setOnAction(e->{
