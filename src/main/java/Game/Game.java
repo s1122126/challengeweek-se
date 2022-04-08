@@ -54,8 +54,8 @@ public class Game extends GameApplication {
         this.player = spawn("player", 100, 1);
         this.enemy = spawn("enemy", 300, 1);
         // set view to player
-//        viewport.setBounds(0,0,2000,1000);
-//        viewport.setZoom(6.25);
+        viewport.setBounds(0,0,2000,1000);
+        viewport.setZoom(6.25);
         viewport.bindToEntity(this.player,  getAppWidth() / 2, (getAppHeight() / 2) + 300);
 
         viewport.setBounds(0,0,2000,1000);
