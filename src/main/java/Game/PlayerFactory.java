@@ -37,7 +37,7 @@ public class PlayerFactory implements EntityFactory {
         physics.setFixtureDef(fix);
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(16, 16, Color.TRANSPARENT))
+                .viewWithBBox(new Rectangle(157, 282, Color.TRANSPARENT))
                 .view("mario.png")
                 .collidable()
                 .with(physics)
@@ -105,8 +105,10 @@ public class PlayerFactory implements EntityFactory {
     public Entity newWalls(SpawnData data){
         return entityBuilder()
                 .from(data)
+                .type(EntityType.WALL)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
+                .collidable()
                 .build();
     }
 }
