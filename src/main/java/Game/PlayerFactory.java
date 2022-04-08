@@ -37,7 +37,7 @@ public class PlayerFactory implements EntityFactory {
         physics.setFixtureDef(fix);
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(157, 282, Color.TRANSPARENT))
+                .viewWithBBox(new Rectangle(16, 16, Color.TRANSPARENT))
                 .view("mario.png")
                 .collidable()
                 .with(physics)
