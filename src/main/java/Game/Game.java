@@ -2,15 +2,16 @@ package Game;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.audio.Music;
+import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.input.virtual.VirtualButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Game extends GameApplication {
 
@@ -32,6 +33,8 @@ public class Game extends GameApplication {
         settings.setHeight(1000);
         settings.setWidth(2000);
         settings.setTitle("The Four Nerds and the Social Adventures of Terror");
+        settings.setMainMenuEnabled(true);
+        settings.setSceneFactory(new UIFactory());
     }
 
     @Override
@@ -40,8 +43,7 @@ public class Game extends GameApplication {
 
         getGameWorld().addEntityFactory(this.playerFactory);
 //        setLevelFromMap("testlevel.tmx");
-        setLevelFromMap("LevelSamurai.tmx");
-
+        setLevelFromMap("Level1.tmx");
 
         //music
         Music music = getAssetLoader().loadMusic("Music.wav");
@@ -52,15 +54,16 @@ public class Game extends GameApplication {
         this.player = spawn("player", 100, 1);
         this.enemy = spawn("enemy", 300, 1);
         // set view to player
-        viewport.bindToEntity(this.player, getAppWidth() / 2, getAppHeight() / 2);
+        viewport.setBounds(0,0,2000,1000);
+        viewport.setZoom(6.25);
+        viewport.bindToEntity(this.player, getAppWidth() / 2, (getAppHeight() / 2) + 300);
         viewport.setLazy(true);
-        enemy.getComponent(EnemyController.class).onUpdate(1);
-
-
     }
 
     @Override
     protected void initInput() {
+
+        Sound shootSound = getAssetLoader().loadSound("shoot.wav");
 
         getInput().addAction(new UserAction("Up") {
             @Override
@@ -68,6 +71,7 @@ public class Game extends GameApplication {
                 player.getComponent(PlayerComponent.class).jump();
             }
         }, KeyCode.SPACE, VirtualButton.UP);
+
         getInput().addAction(new UserAction("left") {
             @Override
             protected void onAction() {
@@ -78,6 +82,7 @@ public class Game extends GameApplication {
                 player.getComponent(PlayerComponent.class).stop();
             }
         }, KeyCode.A, VirtualButton.LEFT);
+
         getInput().addAction(new UserAction("right") {
             @Override
             protected void onAction() {
@@ -87,10 +92,14 @@ public class Game extends GameApplication {
             protected void onActionEnd() {
                 player.getComponent(PlayerComponent.class).stop();
             }
-        }, KeyCode.D, VirtualButton.RIGHT);
-        onBtnDown(MouseButton.PRIMARY, () ->
-                spawn("bullet", player.getCenter()));
 
+        }, KeyCode.D, VirtualButton.RIGHT);
+
+        onBtnDown(MouseButton.PRIMARY, () -> {
+                    spawn("bullet", player.getCenter());
+
+                    getAudioPlayer().playSound(shootSound);
+                });
     }
 
     @Override
@@ -101,10 +110,6 @@ public class Game extends GameApplication {
             enemy.removeFromWorld();
         });
 
-        onCollisionBegin(EntityType.ENEMY, EntityType.PLAYER, (enemy, player) -> {
-            showMessage("You Died!", () -> {
-                getGameController().startNewGame();
-            });
-        });
+        onCollisionBegin(EntityType.ENEMY, EntityType.PLAYER, (enemy, player) -> showMessage("You Died!", () -> getGameController().startNewGame()));
     }
 }

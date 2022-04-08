@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.*;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.texture.AnimatedTexture;
@@ -8,7 +7,8 @@ import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-import static com.almasb.fxgl.dsl.FXGL.*;
+
+import static com.almasb.fxgl.dsl.FXGL.image;
 
 public class PlayerComponent extends Component {
 
@@ -16,6 +16,7 @@ public class PlayerComponent extends Component {
     private int jumps = 1;
     private AnimatedTexture texture;
     private AnimationChannel animIdle, animWalk;
+    private boolean canJump = true;
 
     public PlayerComponent() {
 
@@ -31,21 +32,19 @@ public class PlayerComponent extends Component {
 //        entity.getViewComponent().addChild(texture);
 
         physics.onGroundProperty().addListener((obs, old, isOnGround) -> {
-            if (isOnGround) {
-                jumps = 1;
-            }
+            canJump = isOnGround;
         });
     }
 
 
     public void left() {
-        getEntity().setScaleX(-1);
+//        getEntity().setScaleX(-1);
         physics.setVelocityX(-170);
 
     }
 
     public void right() {
-        getEntity().setScaleX(1);
+//        getEntity().setScaleX(1);
         physics.setVelocityX(170);
     }
 
@@ -59,6 +58,9 @@ public class PlayerComponent extends Component {
 
         physics.setVelocityY(-300);
 
-        jumps--;
+        if (canJump) {
+            canJump = false;
+            physics.setVelocityY(-330);
+        }
     }
 }
